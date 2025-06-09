@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESPDuino Hub - ESP32 Smart Home Controller</title>
+    <link rel="stylesheet" href="../style/project_detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for stars and icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- ESP-Web-Tools for Web Flasher functionality -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js"></script>
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="../assets/logo.png" alt="ESPDuino Hub Logo" class="logo">
+            <span class="logo-text">ESPDuino Hub</span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="../index.html" class="nav-item">Home</a></li>
+                <li><a href="../project_categories.html" class="nav-item">Projects</a></li>
+                <li><a href="#" class="nav-item">Flasher</a></li>
+                <li><a href="#" class="nav-item">About</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="Search Projects..." class="search-input">
+            <button class="search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="project-detail-container">
+        <section class="project-header glow-border">
+            <h1 class="project-name">ESP32: Smart Home Controller</h1>
+            <div class="project-meta">
+                <span class="difficulty hard">Difficulty: Hard</span>
+                <span class="estimated-time">Estimated Time: 8-12 Hours</span>
+                <span class="category">Category: ESP32</span>
+            </div>
+            <p class="project-intro">
+                Build a foundational smart home system using ESP32, allowing you to control devices remotely via a simple web interface or a dedicated mobile application (integration concepts). This project will cover basic IoT principles, network communication, and device control.
+            </p>
+        </section>
+
+        <section class="things-needed glow-border">
+            <h2 class="section-title">Things Needed</h2>
+            <ul class="parts-list">
+                <li>
+                    <span>ESP32 Development Board</span>
+                    <span>₹450</span>
+                </li>
+                <li>
+                    <span>4-Channel Relay Module</span>
+                    <span>₹200</span>
+                </li>
+                <li>
+                    <span>DHT11 Temperature & Humidity Sensor</span>
+                    <span>₹80</span>
+                </li>
+                <li>
+                    <span>Breadboard & Jumper Wires</span>
+                    <span>₹120</span>
+                </li>
+                <li>
+                    <span>Micro USB Cable</span>
+                    <span>₹50</span>
+                </li>
+                <li>
+                    <span>(Optional) Small Enclosure</span>
+                    <span>₹150</span>
+                </li>
+            </ul>
+            <div class="grand-total">
+                <span>Grand Total (Approx):</span>
+                <span class="total-price">₹1050</span>
+            </div>
+            <div class="purchase-links">
+                <h3 class="subsection-title">Recommended Purchase Links:</h3>
+                <ul>
+                    <li><a href="#" target="_blank" class="purchase-btn">Buy ESP32 Board on Amazon IN <i class="fas fa-external-link-alt"></i></a></li>
+                    <li><a href="#" target="_blank" class="purchase-btn">Get 4-Channel Relay Module on Flipkart <i class="fas fa-external-link-alt"></i></a></li>
+                    <li><a href="#" target="_blank" class="purchase-btn">DHT11 Sensor & Wires Kit <i class="fas fa-external-link-alt"></i></a></li>
+                    <li><a href="#" target="_blank" class="purchase-btn">All-in-One Starter Kit for ESP32 <i class="fas fa-external-link-alt"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="project-steps glow-border">
+            <h2 class="section-title">Steps to Build</h2>
+
+            <div class="step">
+                <h3 class="step-title">Step 1: Setup Arduino IDE & ESP32 Board</h3>
+                <p class="step-description">First, ensure your Arduino IDE is set up for ESP32. Install the ESP32 board manager and necessary libraries (e.g., AsyncWebServer, DHT sensor library).</p>
+                <div class="step-image-container">
+                    <img src="../assets/step1_arduino_setup.jpg" alt="Arduino IDE ESP32 Setup" class="step-image">
+                </div>
+                <div class="code-block">
+                    <h4 class="code-title">Arduino IDE Board Manager URL:</h4>
+                    <button class="copy-button" aria-label="Copy code to clipboard"><i class="fas fa-copy"></i></button>
+                    <pre><code class="language-text">https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json</code></pre>
+                </div>
+                <div class="code-block">
+                    <h4 class="code-title">Libraries to Install (via Library Manager):</h4>
+                    <button class="copy-button" aria-label="Copy code to clipboard"><i class="fas fa-copy"></i></button>
+                    <pre><code class="language-text">ESP Async WebServer
+DHT sensor library (by Adafruit)</code></pre>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3 class="step-title">Step 2: Wiring the Components</h3>
+                <p class="step-description">Connect the relay module and DHT11 sensor to your ESP32. Pay close attention to power (VCC, GND) and signal pins.</p>
+                <div class="step-image-container">
+                    <img src="../assets/step2_wiring.jpg" alt="ESP32 Wiring Diagram" class="step-image">
+                    <p class="image-caption">Example wiring diagram (Refer to actual pinouts for your module)</p>
+                </div>
+                <ul class="wiring-details">
+                    <li>ESP32 GPIO 2 (D2) to Relay IN1</li>
+                    <li>ESP32 GPIO 4 (D4) to DHT11 Data Pin</li>
+                    <li>ESP32 3.3V to VCC of DHT11 and Relay</li>
+                    <li>ESP32 GND to GND of DHT11 and Relay</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3 class="step-title">Step 3: Develop the Firmware (Arduino Sketch)</h3>
+                <p class="step-description">Write the Arduino sketch that initializes Wi-Fi, creates a web server, reads sensor data, and controls the relays.</p>
+                <div class="code-block">
+                    <h4 class="code-title">`smart_home_controller.ino`</h4>
+                    <button class="copy-button" aria-label="Copy code to clipboard"><i class="fas fa-copy"></i></button>
+                    <pre><code class="language-cpp">#include &lt;WiFi.h&gt;
+#include &lt;ESPAsyncWebServer.h&gt;
+#include &lt;DHT.h&gt;
+
+// WiFi credentials
+const char* ssid = "YOUR_WIFI_SSID";
+const char* password = "YOUR_WIFI_PASSWORD";
+
+// Relay and DHT pins
+const int RELAY_PIN = 2; // Example GPIO pin for relay
+const int DHT_PIN = 4;   // Example GPIO pin for DHT11
+
+#define DHTTYPE DHT11 // DHT 11
+DHT dht(DHT_PIN, DHTTYPE);
+
+AsyncWebServer server(80); // Create AsyncWebServer object on port 80
+
+void setup() {
+    Serial.begin(115200);
+    pinMode(RELAY_PIN, OUTPUT);
+    digitalWrite(RELAY_PIN, HIGH); // Turn off relay initially (if active low)
+
+    dht.begin();
+
+    // Connect to Wi-Fi
+    WiFi.begin(ssid, password);
+    Serial.print("Connecting to WiFi..");
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    Serial.println();
+    Serial.print("Connected! IP Address: ");
+    Serial.println(WiFi.localIP());
+
+    // Route for web page
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(200, "text/html",
+            "&lt;h1&gt;ESP32 Smart Home&lt;/h1&gt;"
+            "&lt;p&gt;Temperature: " + String(dht.readTemperature()) + " &deg;C&lt;/p&gt;"
+            "&lt;p&gt;Humidity: " + String(dht.readHumidity()) + " %&lt;/p&gt;"
+            "&lt;p&gt;Relay State: " + (digitalRead(RELAY_PIN) == LOW ? "ON" : "OFF") + "&lt;/p&gt;" // Assuming active LOW relay
+            "&lt;a href=\"/toggle\"&gt;Toggle Relay&lt;/a&gt;"
+        );
+    });
+
+    // Route for toggling relay
+    server.on("/toggle", HTTP_GET, [](AsyncWebServerRequest *request){
+        digitalWrite(RELAY_PIN, !digitalRead(RELAY_PIN)); // Toggle the relay
+        request->redirect("/"); // Redirect back to home
+    });
+
+    server.begin(); // Start server
+    Serial.println("HTTP server started");
+}
+
+void loop() {
+    // DHT11 reading (can be done periodically or on request)
+    // For this simple example, we read on web request.
+    // In a real app, you might read every X seconds and store.
+}
+</code></pre>
+                </div>
+                <p class="note"><strong>Remember to replace `YOUR_WIFI_SSID` and `YOUR_WIFI_PASSWORD` with your actual Wi-Fi credentials.</strong></p>
+            </div>
+
+            <div class="step">
+                <h3 class="step-title">Step 4: Upload the Code & Test</h3>
+                <p class="step-description">Select the correct ESP32 board and COM port in Arduino IDE, then upload the sketch. Once uploaded, open the Serial Monitor to see the assigned IP address. Navigate to this IP address in your web browser to control your smart home system.</p>
+                <div class="step-image-container">
+                    <img src="../assets/step4_upload.jpg" alt="Uploading ESP32 Code" class="step-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="flash-section glow-border">
+            <h2 class="section-title">Ready to Flash?</h2>
+            <p>Use our integrated web flasher to upload the compiled binary directly to your ESP32 board. Ensure your board is in flashing mode.</p>
+            <!-- esp-web-tools install button to trigger the flashing dialog -->
+            <esp-web-install-button id="espFlashButton"
+                manifest="../firmware/esp32_smart_home_manifest.json"
+                class="flash-button">
+                <span slot="unsupported">Web Flasher Not Supported</span>
+                <span slot="not-connected">Flash to ESP32 <i class="fas fa-upload"></i></span>
+                <span slot="connected">Connected! Install firmware.</span>
+                <span slot="installing">Installing...</span>
+                <span slot="installed">Firmware Installed!</span>
+            </esp-web-install-button>
+
+            <p class="flash-note">
+                <i class="fas fa fa-info-circle"></i> Note: Web Flasher requires a compatible browser (like Chrome, Edge, Opera) and specific drivers for your board.
+            </p>
+        </section>
+
+        <section class="rating-section glow-border">
+            <h2 class="section-title">Rate This Project</h2>
+            <div class="rating-widget">
+                <input type="range" id="ratingSlider" min="1" max="5" value="3" step="1">
+                <div class="star-display" id="starDisplay">
+                    <i class="fas fa-star filled"></i>
+                    <i class="fas fa-star filled"></i>
+                    <i class="fas fa-star filled"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="rating-value-text">Your Rating: <span id="currentRating">3</span> out of 5</p>
+                <button id="submitRating" class="project-button">Submit Rating</button>
+            </div>
+            <p class="average-rating">Average User Rating: 4.2 stars (150 ratings)</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 ESPDuino Hub. All rights reserved.</p>
+    </footer>
+
+    <script src="../script/project_detail.js"></script>
+    <script src="../script/main.js"></script>
+</body>
+</html>

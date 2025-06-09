@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESPDuino Hub - Web Flasher</title>
+    <link rel="stylesheet" href="style/flasher.css"> <!-- Link to the new CSS file -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- ESP-Web-Tools for Web Flasher functionality -->
+    <!-- Using the version that was confirmed working in test.html -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="ESPDuino Hub Logo" class="logo">
+            <span class="logo-text">ESPDuino Hub</span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="project_categories.html" class="nav-item">Projects</a></li>
+                <li><a href="flasher.html" class="nav-item">Flasher</a></li>
+                <li><a href="#" class="nav-item">About</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="Search Projects..." class="search-input">
+            <button class="search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="flasher-container glow-border">
+        <h1 class="page-title">ESP Firmware Flasher</h1>
+        <p class="flasher-intro">
+            Select a project firmware from the dropdown menu to flash it directly to your ESP32 or ESP8266 board.
+            Ensure your board is connected via USB and is in flashing mode (usually by holding the BOOT button while plugging in or resetting).
+        </p>
+
+        <div class="flasher-controls">
+            <label for="projectSelect" class="select-label">Choose Project Firmware:</label>
+            <select id="projectSelect" class="project-select">
+                <option value="">-- Select a project --</option>
+                <!-- Options will be populated by JavaScript -->
+            </select>
+
+            <!-- The esp-web-install-button will be dynamically updated by JavaScript -->
+            <esp-web-install-button id="projectFlashButton" class="flash-button-main" disabled>
+                <span slot="unsupported">Web Flasher Not Supported</span>
+                <span slot="not-connected">Select Project & Flash <i class="fas fa-microchip"></i></span>
+                <span slot="connected">Connected! Install firmware.</span>
+                <span slot="installing">Installing...</span>
+                <span slot="installed">Firmware Installed!</span>
+            </esp-web-install-button>
+
+            <p class="flasher-note">
+                <i class="fas fa-info-circle"></i> Note: Web Flasher requires a compatible browser (like Chrome, Edge, Opera) and specific drivers for your board.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 ESPDuino Hub. All rights reserved.</p>
+    </footer>
+
+    <script src="script/flasher.js"></script> <!-- New JS for flasher page -->
+    <script src="script/main.js"></script> <!-- Keep main.js for header interactivity/shared elements -->
+</body>
+</html>

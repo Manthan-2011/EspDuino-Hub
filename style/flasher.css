@@ -1,0 +1,475 @@
+/* Core Variables - Important: Keep these consistent across all CSS files */
+:root {
+    --bg-dark: #12121f;
+    --card-bg-1: #1a1a2e;
+    --card-bg-2: #1e1a38;
+    --card-bg-3: #1a2e2e;
+    --text-light: #e0e0e0;
+    --primary-glow: #00e6e6; /* Aqua/Cyan - New glow color */
+    --secondary-glow: #9933ff; /* Purple - New glow color */
+    --accent-color: #00bcd4; /* Teal - Kept same for titles etc. */
+    --button-bg: #0f3460;
+    --button-hover-bg: #1a4f8d;
+    --border-color: #0d1a2f;
+    --input-bg: #0f1628;
+    --input-border: #283747;
+
+    /* Reduced glow RGB values for JS */
+    --primary-glow-rgb: 0, 230, 230;
+    --secondary-glow-rgb: 153, 51, 255;
+    --accent-color-rgb: 0, 188, 212;
+
+    /* Difficulty Colors (if needed, copying for consistency) */
+    --difficulty-very-easy: #4CAF50;
+    --difficulty-easy: #8BC34A;
+    --difficulty-hard: #FF9800;
+    --difficulty-very-hard: #F44336;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    perspective: 1000px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header Styles - IDENTICAL across all pages (with reduced glow) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--card-bg-1);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.logo-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-shadow: 0 0 2px var(--primary-glow);
+    animation: neonText 2s infinite alternate;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 1.1em;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-glow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-item:hover {
+    color: var(--primary-glow);
+    text-shadow: 0 0 2px var(--primary-glow);
+}
+
+.nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--input-bg);
+    border-radius: 25px;
+    padding: 5px 15px;
+    border: 1px solid var(--input-border);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 3px var(--primary-glow);
+}
+
+.search-input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-light);
+    font-size: 1em;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.search-button svg {
+    color: var(--accent-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.search-button:hover svg {
+    color: var(--primary-glow);
+    transform: scale(1.1);
+}
+
+
+/* Flasher Page Specific Styles */
+.flasher-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: var(--card-bg-2);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3em;
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--primary-glow);
+    margin-bottom: 30px;
+    animation: neonText 2s infinite alternate;
+}
+
+.flasher-intro {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flasher-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.select-label {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary-glow);
+}
+
+.project-select {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-light);
+    border: 1px solid var(--input-border);
+    font-size: 1em;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-select:focus {
+    outline: none;
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 8px rgba(var(--primary-glow-rgb), 0.5);
+}
+
+.project-select option {
+    background-color: var(--input-bg);
+    color: var(--text-light);
+    padding: 10px;
+}
+
+/* Style the esp-web-install-button directly */
+.flash-button-main {
+    --button-background-color: var(--button-bg);
+    --button-text-color: var(--text-light);
+    --button-hover-background-color: var(--button-hover-bg);
+    --button-active-background-color: var(--button-hover-bg);
+    --button-border-radius: 30px;
+    --button-font-size: 1.2em;
+    --button-font-weight: 600;
+    --button-padding: 15px 30px;
+    --button-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --button-text-hover-color: var(--primary-glow); /* Custom property for text color on hover */
+    margin-top: 20px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease; /* Ensure button transitions properly when enabled/disabled */
+}
+
+/* Custom glow effect for esp-web-install-button */
+.flash-button-main::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+    z-index: -1;
+}
+
+.flash-button-main:hover::before {
+    width: 150%;
+    height: 150%;
+    opacity: 0.08;
+}
+
+.flash-button-main[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.flash-button-main[disabled]:hover::before {
+    opacity: 0; /* No hover glow when disabled */
+}
+
+.flash-button-main span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flasher-note {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* Footer Styles - IDENTICAL across all pages */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--card-bg-1);
+    border-top: 2px solid var(--border-color);
+    margin-top: 60px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+/* Animations - IDENTICAL across all pages */
+@keyframes neonText {
+    0% {
+        text-shadow: 0 0 1px var(--primary-glow), 0 0 2px var(--primary-glow);
+    }
+    100% {
+        text-shadow: 0 0 2px var(--primary-glow), 0 0 4px var(--primary-glow), 0 0 6px rgba(0, 230, 230, 0.3);
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        filter: drop-shadow(0 0 1px var(--primary-glow));
+    }
+    100% {
+        filter: drop-shadow(0 0 4px var(--primary-glow)) drop_shadow(0 0 8px rgba(0, 230, 230, 0.2));
+    }
+}
+
+@keyframes border-glow {
+    0% {
+        opacity: 0.2;
+        filter: blur(2px);
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.4;
+        filter: blur(3px);
+        transform: scale(1.005);
+    }
+    100% {
+        opacity: 0.2;
+        filter: blur(2px);
+        transform: scale(1);
+    }
+}
+
+/* Dynamic glow effect for flasher container */
+.flasher-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at var(--x) var(--y), rgba(var(--primary-glow-rgb), 0.01) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.flasher-container:hover::before {
+    opacity: 0.5;
+}
+
+/* Responsive Design for Flasher Page */
+@media (max-width: 1024px) {
+    .header {
+        padding: 15px 30px;
+    }
+    .logo-text {
+        font-size: 1.5em;
+    }
+    .nav ul {
+        gap: 20px;
+    }
+    .nav-item {
+        font-size: 1em;
+    }
+    .search-input {
+        width: 150px;
+    }
+    .flasher-container {
+        padding: 30px;
+        margin: 40px auto;
+    }
+    .page-title {
+        font-size: 2.5em;
+    }
+    .flasher-intro {
+        font-size: 1em;
+    }
+    .select-label {
+        font-size: 1.1em;
+    }
+    .project-select {
+        font-size: 0.95em;
+    }
+    .flash-button-main {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .nav ul {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .search-container {
+        width: 80%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    .search-input {
+        width: 100%;
+        text-align: center;
+    }
+    .flasher-container {
+        padding: 25px;
+        margin: 30px auto;
+    }
+    .page-title {
+        font-size: 2em;
+    }
+    .flasher-intro {
+        font-size: 0.95em;
+    }
+    .select-label {
+        font-size: 1em;
+    }
+    .project-select {
+        width: 90%;
+    }
+    .flash-button-main {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.3em;
+    }
+    .nav-item {
+        font-size: 0.9em;
+    }
+    .page-title {
+        font-size: 1.8em;
+    }
+    .flasher-intro {
+        font-size: 0.85em;
+    }
+    .project-select {
+        width: 100%;
+    }
+    .flash-button-main {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+}
